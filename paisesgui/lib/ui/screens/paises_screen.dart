@@ -25,6 +25,16 @@ class PaisesScreen extends StatelessWidget {
     // TO-DO
     // Debemos utilizar un ListView.builder para recorrer la lista de países
     // y generar un widget personalizado de tipo PaisCard, con la imagen y el nombre.
+    ListView.builder(
+      itemCount: paises.length,
+      itemBuilder: (context, index) {
+        final pais = paises[index];
+        return PaisCard(
+          imagen: pais.imagen ?? "",
+          nombre: pais.nombre,
+        );
+      },
+    );  
     return const Placeholder();
   }
 }
