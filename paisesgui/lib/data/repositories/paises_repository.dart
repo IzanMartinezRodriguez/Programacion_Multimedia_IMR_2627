@@ -46,15 +46,21 @@ class PaisesRepository {
 
   // TO-DO:
   // Implementar el método getPaises
-  List<Pais> getPaises(){
-
-    return [];
-  }    
-
+ List<Pais> getPaises() {
+    return (api.getPaises()).map((paisJSON) {
+      return Pais.fromJSON(paisJSON);
+    }).toList();
+  }
+  
   // TO-DO:
   // Implementar el método infoPais
-  Pais infoPais() {
-    return Pais(nombre: 'Sin implementar');
-  }
+Pais infoPais() {
+  return Pais.fromJSON(api.infoPais());
+}
+
+    // Buscamos el país que coincida con el nombre proporcionado.
+    // Nota: Asegúrate de que la clave ('nombre') coincida exactamente con la 
+    // estructura que devuelve tu servicio PaisesEjemplo.
+   
 
 }

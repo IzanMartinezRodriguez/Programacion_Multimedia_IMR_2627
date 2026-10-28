@@ -25,7 +25,7 @@ class PaisesScreen extends StatelessWidget {
     // TO-DO
     // Debemos utilizar un ListView.builder para recorrer la lista de países
     // y generar un widget personalizado de tipo PaisCard, con la imagen y el nombre.
-    ListView.builder(
+   return ListView.builder(
       itemCount: paises.length,
       itemBuilder: (context, index) {
         final pais = paises[index];
@@ -35,7 +35,6 @@ class PaisesScreen extends StatelessWidget {
         );
       },
     );  
-    return const Placeholder();
   }
 }
 
@@ -51,12 +50,36 @@ class PaisCard extends StatelessWidget {
   final String imagen;
   final String nombre;
 
-  @override
+ @override
   Widget build(BuildContext context) {
-    // TO-DO
-    // Devuelve un widget de tipo Card, con el diseño que desees, pero
-    // que muestre la imagen  (obtenida de Internet a partir de la url)
-    // y el nombre del país.
-    return const Placeholder();
+    return Card(
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      elevation: 6,
+      // Recorta la imagen con los bordes redondeados de la tarjeta
+      clipBehavior: Clip.antiAlias,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16)),
+      child: Stack(
+        alignment: Alignment.bottomLeft,
+        children: [
+          // Imagen del país descargada de Internet
+          Image.network(
+            imagen,
+            height: 150,
+            width: double.infinity,
+            fit: BoxFit.cover,
+          ),
+          Positioned(
+            bottom: 30,
+            left: 30,
+              child: Text(
+                nombre,
+                style: Theme.of(context).textTheme.displaySmall,
+                ),
+              ),
+          ],
+            ),
+          ); 
   }
 }
+
